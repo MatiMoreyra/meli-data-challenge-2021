@@ -3,4 +3,6 @@
 *.json
 *.pkl
 *.pyc
+*.npz
+*.npy
 __pycache__
