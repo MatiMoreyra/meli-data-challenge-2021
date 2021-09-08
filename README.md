@@ -13,7 +13,24 @@ The outputs of all these level-0 models are concatenated to train a feedforward 
 
 ![diagram](diagram.png)
 
+The last 30 days of the train dataset are used to generate the labels and the target stock input. The remaining 29 days are used to generate the time series input.
+
+Once all models are trained, the last 29 days of the train dataset and the provided target stock values are used to generate the submission.
+
 ## How to run the solution
+
+### Requirements
+  - TensorFlow v2.
+  - Pandas.
+  - Numpy.
+  - Scikit-learn.
+
+CUDA drivers and a CUDA-compatible GPU is required (I didn't have the time to test this on a cpu).
+
+Some scripts require up to 30GB of RAM (again, I didn't have the time to implement a more memory-friendly solution).
+
+### Running the scripts
+
 Go to the `src` directory:
 ```
 cd src
