@@ -1,0 +1,6 @@
+*.gz
+*.hdf5
+*.json
+*.pkl
+*.pyc
+__pycache__
