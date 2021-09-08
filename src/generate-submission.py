@@ -9,36 +9,34 @@ from models.GRUBasedNN import GRUBasedNN
 from models.XGBHubberRegressor import XGBHubberRegressor
 from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
+import config
 
 physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
 
-DATA_PATH = "clean_data"
-DATASET_DIRECTORY = "/home/mati/repos/ml/meli-2021/dataset"
-ENSEMBLE_PATH = "trained_models/lstm.hdf5"
 BATCH_SIZE = 500
-SCALER_PATH = "trained_models/scaler.pkl"
+
 # List of tuples with models and the argument for its load(path) function.
-MODELS = [(LSTMBasedNN(), "trained_models/lstm.hdf5"),
-          (GRUBasedNN(), "trained_models/gru.hdf5"),
-          (XGBHubberRegressor(), "trained_models/xgb-hub.json"),
-          (XGBMSERegressor(), "trained_models/xgb-mse.json"),
-          (XGBMultiQuantileRegressor(), "trained_models/xgb")]
+MODELS = [(LSTMBasedNN(), config.LSTM_PATH),
+          (GRUBasedNN(), config.GRU_PATH),
+          (XGBHubberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
+          (XGBMSERegressor(), config.XGB_MSE_REGRESSOR_PATH),
+          (XGBMultiQuantileRegressor(), config.XGB_QUANTILE_REGRESSOR_PREFIX)]
 
 # Build submission file
-df_test = pd.read_csv(DATASET_DIRECTORY + '/test_data.csv')
+df_test = pd.read_csv(config.DATASET_DIRECTORY + '/test_data.csv')
 
 targets_skus = df_test["sku"].to_numpy() - 1
 targets = df_test["target_stock"].to_numpy()
 
 print("Targets:" + str(targets.shape[0]))
 
-x_input = np.load(DATA_PATH + "/series.npy")[:,-29:,1:]
+x_input = np.load(config.TIME_SERIES_PATH)[:,-29:,1:]
 series = None
 t_input = np.ones((x_input.shape[0],1))
 t_input[targets_skus,0]=targets
 
-scaler = InputScaler.load(SCALER_PATH)
+scaler = InputScaler.load(config.SCALER_PATH)
 
 x_input, t_input = scaler.transform(x_input, t_input)
 
@@ -51,7 +49,7 @@ for m in MODELS:
 
 X = np.hstack(lvl_0_outputs)
 
-model = tf.keras.models.load_model('trained_models/ensemble.hdf5',compile=False)
+model = tf.keras.models.load_model(config.ENSEMBLE_MODEL_PATH,compile=False)
 
 y_pred = model.predict(X, batch_size=BATCH_SIZE)
 

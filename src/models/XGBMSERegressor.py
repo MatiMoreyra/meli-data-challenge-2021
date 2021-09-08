@@ -1,6 +1,5 @@
 import xgboost as xgb
 import numpy as np
-from sklearn.metrics import mean_squared_error as MSE
 
 
 class XGBMSERegressor():
@@ -32,17 +31,10 @@ class XGBMSERegressor():
             "seed": 2021
         }
 
-        # training, we set the early stopping rounds parameter
         model = xgb.train(params,
                           train, evals=[(train, "train"),
                                         (test, "validation")],
                           num_boost_round=20000, early_stopping_rounds=200)
-        # # Predict the model
-        # pred = model.predict(test)
-
-        # # MAE Computation
-        # mae = np.mean(np.abs(Y_test - pred))
-        # print("Training finished, MAE test: % f" % (mae))
 
         model.save_model(output_file)
 

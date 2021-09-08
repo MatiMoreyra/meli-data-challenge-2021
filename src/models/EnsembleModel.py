@@ -8,8 +8,6 @@ def create_ensemble_model(input_size):
     z = Dense(200)(input)
     z = Activation("relu")(z)
     z = Dropout(0.2) (z)
-    # z = Dense(60)(input)
-    # z = Activation("relu")(z)
 
     # Softmax to generate a probability distribution.
     z = Dense(30)(z)

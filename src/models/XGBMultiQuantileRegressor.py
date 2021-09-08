@@ -1,6 +1,7 @@
 import xgboost as xgb
 import numpy as np
 
+
 def xgb_quantile_eval(quantile):
     q = quantile
 
@@ -67,7 +68,6 @@ class XGBMultiQuantileRegressor():
         }
 
         for q in XGBMultiQuantileRegressor.QUANTILES:
-            # training, we set the early stopping rounds parameter
             model = xgb.train(params,
                               train, evals=[(train, "train"),
                                             (test, "validation")],

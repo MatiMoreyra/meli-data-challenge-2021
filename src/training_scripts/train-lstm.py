@@ -1,23 +1,15 @@
 from datasetutils import load_lvl_0_dataset
 from models.LSTMBasedNN import LSTMBasedNN
 from models.InputScaler import InputScaler
+import config
 
-MODEL_NAME = "lstm.hdf5"
-MODEL_PATH = "trained_models/" + MODEL_NAME
-DATA_PATH = "clean_data"
-SCALER_PATH = "trained_models/scaler.pkl"
-BATCH_SIZE = 1000
-TRAIN_SIZE = 450000
-DATASET_REPETITIONS = 4
+X_train, T_train, Y_train, X_val, T_val, Y_val = load_lvl_0_dataset(config.DATA_REPETITIONS_NN)
 
-X_train, T_train, Y_train, X_val, T_val, Y_val = load_lvl_0_dataset(
-    TRAIN_SIZE, DATA_PATH, DATASET_REPETITIONS)
-
-scaler = InputScaler.load(SCALER_PATH)
+scaler = InputScaler.load(config.SCALER_PATH)
 
 X_train, T_train = scaler.transform(X_train, T_train)
 X_val, T_val = scaler.transform(X_val, T_val)
 
 model = LSTMBasedNN()
-model.train(X_train, T_train, Y_train, X_val, T_val, Y_val, MODEL_PATH, BATCH_SIZE)
+model.train(X_train, T_train, Y_train, X_val, T_val, Y_val, config.LSTM_PATH, config.DEFAULT_BATCH_SIZE)
 

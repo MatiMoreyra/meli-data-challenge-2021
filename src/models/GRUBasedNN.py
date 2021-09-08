@@ -8,6 +8,7 @@ from tensorflow.python.keras.callbacks import EarlyStopping, ModelCheckpoint, Re
 from rps import rps
 import config
 
+
 def create_keras_model(input_shape_x, input_shape_t):
     # Define two sets of inputs
     temporal_input = Input(shape=input_shape_x)
@@ -34,8 +35,6 @@ def create_keras_model(input_shape_x, input_shape_t):
     z = Dense(30)(z)
     z = Activation("softmax")(z)
 
-    # our model will accept the inputs of the two branches and
-    # then output a single value
     return Model(inputs=[temporal_input, target_input], outputs=z)
 
 

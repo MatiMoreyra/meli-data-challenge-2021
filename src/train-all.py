@@ -8,7 +8,6 @@ from datasetutils import load_lvl_0_dataset
 import config
 
 ### Train XGB regressors ###
-
 # List of tuples with models and the path argument for their train function.
 XGB_MODELS = [
     (XGBHubberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
