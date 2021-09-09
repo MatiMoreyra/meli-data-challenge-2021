@@ -17,6 +17,7 @@ The last 30 days of the train dataset are used to generate the labels and the ta
 
 Once all models are trained, the last 29 days of the train dataset and the provided target stock values are used to generate the submission.
 
+This solution gets a score around 3.7075 on the public dataset.
 ## How to run the solution
 
 ### Requirements
@@ -29,9 +30,21 @@ CUDA drivers and a CUDA-compatible GPU is required (I didn't have the time to te
 
 Some scripts require up to 30GB of RAM (again, I didn't have the time to implement a more memory-friendly solution).
 
-### Running the scripts
+The solution was tested on Ubuntu 20.04.
 
-Go to the `src` directory:
+### Running the scripts
+### All-in-one script
+A convenient script to run the entire solution is provided:
+```
+cd src
+./run-solution.sh
+```
+*Note: the entire process may take more than 3 hours to run.*
+
+### Step by step
+If you find troubles running the al-in-one script, you can run the solution step by step following the instructions bellow:
+
+`cd` into the `src` directory:
 ```
 cd src
 ```
