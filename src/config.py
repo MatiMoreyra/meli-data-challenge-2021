@@ -36,5 +36,5 @@ DEFAULT_BATCH_SIZE = 1000
 # XGB regressors seem to work better without data augmentation.
 DATA_REPETITIONS_XGB = 1
 
-# NN models seem to work better with 2 dataset repetitions.
-DATA_REPETITIONS_NN = 4
+# NN models seem to work better with 3 dataset repetitions.
+DATA_REPETITIONS_NN = 3
