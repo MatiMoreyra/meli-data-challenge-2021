@@ -1,3 +1,5 @@
+import os
+import sys
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Input, Dropout, Flatten, Activation, Concatenate, GlobalAveragePooling1D, GlobalMaxPooling1D, GRU
 from tensorflow.python.keras.models import Model
@@ -6,6 +8,8 @@ from models.InputScaler import InputScaler
 from tensorflow.keras.optimizers import Adam
 from tensorflow.python.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from rps import rps
+
+sys.path.append(os.path.abspath('./'))
 import config
 
 

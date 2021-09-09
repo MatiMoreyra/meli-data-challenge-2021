@@ -1,5 +1,9 @@
 import pandas as pd
 import numpy as np
+import os
+import sys
+
+sys.path.append(os.path.abspath('./'))
 import config
 
 FEATURES = [
@@ -37,7 +41,7 @@ df_meli['date'] = pd.to_datetime(df_meli['date'])
 df_meli["active"] = df_meli["minutes_active"] != 0
 
 # One-hot encode categorical values
-print("One-hot enconding categorical values...")
+print("One-hot enconding categorical values")
 df_meli["premium"] = df_meli["listing_type"] == "premium"
 
 df_meli["fulfillment"] = df_meli["shipping_logistic_type"] == "fulfillment"
@@ -48,7 +52,7 @@ df_meli["free_shipping"] = df_meli["shipping_payment"] == "free_shipping"
 df_meli.drop(columns=["shipping_logistic_type", "listing_type"], inplace=True)
 
 # Normalize currency by dividing for the price mean of each site
-print("Normalizing prices...")
+print("Normalizing prices")
 unique_currencies = df_meli["currency"].unique()
 for cur in unique_currencies:
     subset = df_meli[df_meli["currency"] == cur]
@@ -58,7 +62,7 @@ for cur in unique_currencies:
 df_meli.drop(columns=["currency"], inplace=True)
 
 # Merge with static data
-print("Merging static data...")
+print("Merging static data")
 df_static = pd.read_json(config.DATASET_DIRECTORY + '/items_static_metadata_full.jl', lines=True)
 df_meli = pd.merge(df_meli,df_static,on="sku",how="left")
 

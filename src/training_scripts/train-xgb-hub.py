@@ -1,6 +1,9 @@
+import os
+import sys
 from models.XGBHubberRegressor import XGBHubberRegressor
 from models.InputScaler import InputScaler
 from datasetutils import load_lvl_0_dataset
+sys.path.append(os.path.abspath('./'))
 import config
 
 X_train, T_train, Y_train, X_val, T_val, Y_val = load_lvl_0_dataset(config.DATA_REPETITIONS_XGB)

@@ -6,8 +6,12 @@ from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
 from models.InputScaler import InputScaler
 from datasetutils import load_lvl_0_dataset
 import config
+from pathlib import Path
 
-### Train XGB regressors ###
+# Create clean data directory if not exists
+Path(config.TRAINED_MODELS_PATH).mkdir(parents=False, exist_ok=True)
+
+## Train XGB regressors ###
 # List of tuples with models and the path argument for their train function.
 XGB_MODELS = [
     (XGBHubberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
