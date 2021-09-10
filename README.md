@@ -1,5 +1,5 @@
 # Meli Data Challenge 2021
-My solution for the Meli Data Challenge 2021
+My solution for the [Meli Data Challenge 2021](https://ml-challenge.mercadolibre.com/).
 
 ## The Model
 My final model is an ensemble combining recurrent neural networks and XGBoost regressors.
