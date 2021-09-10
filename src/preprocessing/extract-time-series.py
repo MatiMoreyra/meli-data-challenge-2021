@@ -146,7 +146,7 @@ df_meli["item_count"].fillna(1,inplace=True)
 
 df_meli.drop(columns=["site_id","product_id","item_domain_id","item_title","product_family_id","item_id"],inplace=True)
 
-# extract time series
+# Extract time series
 min_date = np.min(df_meli["date"])
 max_date = np.max(df_meli["date"])
 

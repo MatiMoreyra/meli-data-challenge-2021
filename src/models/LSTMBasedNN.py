@@ -4,8 +4,6 @@ import tensorflow as tf
 from tensorflow.keras.layers import Dense, Input, Dropout, Flatten, Activation, Concatenate, GlobalAveragePooling1D, GlobalMaxPooling1D, LSTM
 from tensorflow.python.keras.models import Model
 from tensorflow.keras.optimizers import Adam
-from models.InputScaler import InputScaler
-from tensorflow.keras.optimizers import Adam
 from tensorflow.python.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from rps import rps
 
@@ -18,7 +16,7 @@ def create_keras_model(input_shape_x, input_shape_t):
     temporal_input = Input(shape=input_shape_x)
     target_input = Input(shape=input_shape_t,)
 
-    # Branch 1: just flatten the target stock input
+    # Branch 1: just flatten the target stock input (this is not really needed).
     target_out = Flatten()(target_input)
 
     # Branch 2: LSTM for sequential data

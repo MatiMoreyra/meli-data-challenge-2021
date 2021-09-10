@@ -7,7 +7,7 @@ from tensorflow.python.keras.callbacks import ReduceLROnPlateau
 from models.EnsembleModel import create_ensemble_model
 from models.LSTMBasedNN import LSTMBasedNN
 from models.GRUBasedNN import GRUBasedNN
-from models.XGBHubberRegressor import XGBHubberRegressor
+from models.XGBHuberRegressor import XGBHuberRegressor
 from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
 from models.InputScaler import InputScaler
@@ -21,7 +21,7 @@ tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
 # List of tuples with models and the argument for its load(path) function.
 MODELS = [(LSTMBasedNN(), config.LSTM_PATH),
           (GRUBasedNN(), config.GRU_PATH),
-          (XGBHubberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
+          (XGBHuberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
           (XGBMSERegressor(), config.XGB_MSE_REGRESSOR_PATH),
           (XGBMultiQuantileRegressor(), config.XGB_QUANTILE_REGRESSOR_PREFIX)]
 

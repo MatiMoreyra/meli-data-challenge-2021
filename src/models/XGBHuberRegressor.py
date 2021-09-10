@@ -2,7 +2,7 @@ import xgboost as xgb
 import numpy as np
 
 
-class XGBHubberRegressor():
+class XGBHuberRegressor():
     def __init__(self):
         self.model = None
 

@@ -1,6 +1,6 @@
 from models.LSTMBasedNN import LSTMBasedNN
 from models.GRUBasedNN import GRUBasedNN
-from models.XGBHubberRegressor import XGBHubberRegressor
+from models.XGBHuberRegressor import XGBHuberRegressor
 from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
 from models.InputScaler import InputScaler
@@ -14,7 +14,7 @@ Path(config.TRAINED_MODELS_PATH).mkdir(parents=False, exist_ok=True)
 ## Train XGB regressors ###
 # List of tuples with models and the path argument for their train function.
 XGB_MODELS = [
-    (XGBHubberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
+    (XGBHuberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
     (XGBMSERegressor(), config.XGB_MSE_REGRESSOR_PATH),
     (XGBMultiQuantileRegressor(), config.XGB_QUANTILE_REGRESSOR_PREFIX)
 ]

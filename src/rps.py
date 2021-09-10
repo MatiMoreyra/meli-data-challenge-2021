@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-# RPS functino implemented with tensorflow.
+# RPS function implemented with tensorflow.
 # This can be used directly as a loss function.
 def rps(y, y_hat):
     c_y_hat = tf.math.cumsum(y_hat, axis=-1)

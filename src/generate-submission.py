@@ -6,7 +6,7 @@ import numpy as np
 from models.InputScaler import InputScaler
 from models.LSTMBasedNN import LSTMBasedNN
 from models.GRUBasedNN import GRUBasedNN
-from models.XGBHubberRegressor import XGBHubberRegressor
+from models.XGBHuberRegressor import XGBHuberRegressor
 from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
 import config
@@ -19,7 +19,7 @@ BATCH_SIZE = 500
 # List of tuples with models and the argument for its load(path) function.
 MODELS = [(LSTMBasedNN(), config.LSTM_PATH),
           (GRUBasedNN(), config.GRU_PATH),
-          (XGBHubberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
+          (XGBHuberRegressor(), config.XGB_HUBBER_REGRESSOR_PATH),
           (XGBMSERegressor(), config.XGB_MSE_REGRESSOR_PATH),
           (XGBMultiQuantileRegressor(), config.XGB_QUANTILE_REGRESSOR_PREFIX)]
 

@@ -1,7 +1,7 @@
 import numpy as np
 import pickle
 
-
+# Custom scaler to easily normalize features along the time axis.
 class InputScaler():
     def __init__(self):
         self.X_means = list()
