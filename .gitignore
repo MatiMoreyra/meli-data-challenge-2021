@@ -5,4 +5,7 @@
 *.pyc
 *.npz
 *.npy
+*.csv
+*.parquet
+*.jl
 __pycache__
