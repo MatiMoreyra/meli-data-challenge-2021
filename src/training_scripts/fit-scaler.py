@@ -1,10 +1,10 @@
-import os
-import sys
+import os, sys
+# Append the src directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import config
 from datasetutils import load_lvl_0_dataset
 from models.InputScaler import InputScaler
-
-sys.path.append(os.path.abspath('./'))
-import config
 
 X_train, T_train, _, _, _, _ = load_lvl_0_dataset()
 

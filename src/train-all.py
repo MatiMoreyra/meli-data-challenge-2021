@@ -1,14 +1,15 @@
+from pathlib import Path
+
+import config
+from datasetutils import load_lvl_0_dataset
 from models.LSTMBasedNN import LSTMBasedNN
 from models.GRUBasedNN import GRUBasedNN
 from models.XGBHuberRegressor import XGBHuberRegressor
 from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
 from models.InputScaler import InputScaler
-from datasetutils import load_lvl_0_dataset
-import config
-from pathlib import Path
 
-# Create clean data directory if not exists
+# Create directory for trained models if not exists.
 Path(config.TRAINED_MODELS_PATH).mkdir(parents=False, exist_ok=True)
 
 ## Train XGB regressors ###

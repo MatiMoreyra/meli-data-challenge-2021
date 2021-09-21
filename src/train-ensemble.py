@@ -1,9 +1,10 @@
 import numpy as np
-import os
 import tensorflow as tf
 from tensorflow.keras.optimizers import Adam
 from tensorflow.python.keras.callbacks import ReduceLROnPlateau
 
+import config
+from datasetutils import load_lvl_1_dataset
 from models.EnsembleModel import create_ensemble_model
 from models.LSTMBasedNN import LSTMBasedNN
 from models.GRUBasedNN import GRUBasedNN
@@ -12,8 +13,6 @@ from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
 from models.InputScaler import InputScaler
 from rps import rps
-from datasetutils import load_lvl_1_dataset
-import config
 
 physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)

@@ -2,14 +2,14 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-import numpy as np
+
+import config
 from models.InputScaler import InputScaler
 from models.LSTMBasedNN import LSTMBasedNN
 from models.GRUBasedNN import GRUBasedNN
 from models.XGBHuberRegressor import XGBHuberRegressor
 from models.XGBMSERegressor import XGBMSERegressor
 from models.XGBMultiQuantileRegressor import XGBMultiQuantileRegressor
-import config
 
 physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)

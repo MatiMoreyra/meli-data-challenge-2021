@@ -1,5 +1,3 @@
-import os
-import sys
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Input, Dropout, Flatten, Activation, Concatenate, GlobalAveragePooling1D, GlobalMaxPooling1D, LSTM
 from tensorflow.python.keras.models import Model
@@ -7,9 +5,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.python.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from rps import rps
 
-sys.path.append(os.path.abspath('./'))
-import config
-
+DEFAULT_BATCH_SIZE = 1000
 
 def create_keras_model(input_shape_x, input_shape_t):
     # Define two sets of inputs
@@ -46,7 +42,7 @@ class LSTMBasedNN():
     def __init__(self):
         self.model = None
 
-    def train(self, X_train, T_train, Y_train, X_test, T_test, Y_test, output_file, batch_size=config.DEFAULT_BATCH_SIZE):
+    def train(self, X_train, T_train, Y_train, X_test, T_test, Y_test, output_file, batch_size=DEFAULT_BATCH_SIZE):
         physical_devices = tf.config.list_physical_devices('GPU')
         tf.config.experimental.set_memory_growth(
             physical_devices[0], enable=True)
@@ -73,4 +69,4 @@ class LSTMBasedNN():
         self.model = tf.keras.models.load_model(path, compile=False)
 
     def predict(self, X, T):
-        return self.model.predict([X, T], batch_size=config.DEFAULT_BATCH_SIZE)
+        return self.model.predict([X, T], batch_size=DEFAULT_BATCH_SIZE)

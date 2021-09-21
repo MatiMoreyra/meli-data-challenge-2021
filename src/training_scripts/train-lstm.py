@@ -1,10 +1,11 @@
-import os
-import sys
+import os, sys
+# Append the src directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import config
 from datasetutils import load_lvl_0_dataset
 from models.LSTMBasedNN import LSTMBasedNN
 from models.InputScaler import InputScaler
-sys.path.append(os.path.abspath('./'))
-import config
 
 X_train, T_train, Y_train, X_val, T_val, Y_val = load_lvl_0_dataset(config.DATA_REPETITIONS_NN)
 

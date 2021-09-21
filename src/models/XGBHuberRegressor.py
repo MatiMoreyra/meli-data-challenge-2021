@@ -50,7 +50,3 @@ class XGBHuberRegressor():
     def predict(self, X, T):
         return self.model.predict(np.concatenate((X.reshape(X.shape[0], -1), T), axis=1)).reshape(-1, 1)
 
-    def evaluate(self, X, T, Y):
-        Y_pred = self.model.predict(np.concatenate(
-            (X.reshape(X.shape[0], -1), T), axis=1))
-        return np.mean(np.abs(Y_pred - Y))
