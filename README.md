@@ -23,7 +23,7 @@ Once all models are trained, the last 29 days of the train dataset and the provi
 
 This solution gets a score around 3.7075 on the public dataset.
 
-_Disclaimer: the entire solution lacks some fine tuning since I built this little ensemble monster towards the end of the competition. I didn't have the time to fine-tune each model (there are technically 16 models to tune if we consider each quantile regressors as an independent model)._
+_Disclaimer: the entire solution lacks some fine tuning since I came up with this little ensemble monster towards the end of the competition. I didn't have the time to fine-tune each model (there are technically 16 models to tune if we consider each quantile regressor as an independent model)._
 
 ## How to run the solution
 
@@ -33,11 +33,11 @@ _Disclaimer: the entire solution lacks some fine tuning since I built this littl
   - Numpy.
   - Scikit-learn.
 
-CUDA drivers and a CUDA-compatible GPU is required (I didn't have the time to test this on a cpu).
+CUDA drivers and a CUDA-compatible GPU is required (I didn't have the time to test this on a CPU).
 
-Some scripts require up to 30GB of RAM (again, I didn't have the time to implement a more memory-friendly solution).
+Some scripts require up to 30GB of RAM (again, I didn't have the time to implement a more memory-efficient solution).
 
-The solution was tested on Ubuntu 20.04.
+The solution was tested on Ubuntu 20.04 with Python 3.8.10.
 
 ### Downloading the dataset
 Download the dataset files from https://ml-challenge.mercadolibre.com/downloads and put them into the `dataset/` directory.
@@ -60,7 +60,7 @@ cd src
 *Note: the entire process may take more than 3 hours to run.*
 
 ### Step by step
-If you find troubles running the al-in-one script, you can run the solution step by step following the instructions bellow:
+If you find trouble running the al-in-one script, you can run the solution step by step following the instructions bellow:
 
 `cd` into the `src` directory:
 ```
@@ -85,4 +85,10 @@ python3 ./train-ensemble.py
 Generate the submission file and gzip it:
 ```
 python3 ./generate-submission.py && gzip ./submission.csv
+```
+
+### Utility scripts
+The `training_scripts` directory contains some scripts to train each model separately, example usage:
+```
+python3 ./training_scripts/train-lstm.py
 ```
