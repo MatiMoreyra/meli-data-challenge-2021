@@ -1,5 +1,5 @@
 # Meli Data Challenge 2021 - First Place Solution
-My solution for the [Meli Data Challenge 2021](https://ml-challenge.mercadolibre.com/).
+My solution for the [Meli Data Challenge 2021](https://ml-challenge.mercadolibre.com/), first place in both public and private leaderboards.
 
 ## The Model
 My final model is an ensemble combining recurrent neural networks and XGBoost regressors.
@@ -20,8 +20,6 @@ The train/validation split is done at a sku level:
   - For the level-1 model: the sku's used for training level-0 models are removed from the dataset and the remaining sku's are split again into train/validation.
 
 Once all models are trained, the last 29 days of the train dataset and the provided target stock values are used as input to generate the submission.
-
-This solution gets a score around 3.7075 on the public dataset.
 
 _Disclaimer: the entire solution lacks some fine tuning since I came up with this little ensemble monster towards the end of the competition. I didn't have the time to fine-tune each model (there are technically 16 models to tune if we consider each quantile regressor as an independent model)._
 
