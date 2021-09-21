@@ -1,10 +1,10 @@
-# Meli Data Challenge 2021
+# Meli Data Challenge 2021 - First Place Solution
 My solution for the [Meli Data Challenge 2021](https://ml-challenge.mercadolibre.com/).
 
 ## The Model
 My final model is an ensemble combining recurrent neural networks and XGBoost regressors.
-Neural networks are trained to predict the stock days probability distribution using the RPS as loss directly.
-XGBoost regressors are trained to predict stock days using different losses, here the intuition behind this:
+Neural networks are trained to predict the stock days probability distribution using the RPS as loss function.
+XGBoost regressors are trained to predict stock days using different objectives, here the intuition behind this:
   - MSE loss: the regressor trained with this loss will output values close to the expected mean.
   - Pseudo-Huber loss: an alternative for the MAE loss, this regressor outputs values close to the expected median.
   - Quantile loss: 11 regressors are trained using a quantile loss with alpha 0, 0.1, 0.2, ..., 1. This helps to build the final probability distribution.
