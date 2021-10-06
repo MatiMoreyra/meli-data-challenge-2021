@@ -58,7 +58,7 @@ cd src
 *Note: the entire process may take more than 3 hours to run.*
 
 ### Step by step
-If you find trouble running the al-in-one script, you can run the solution step by step following the instructions bellow:
+If you find trouble running the all-in-one script, you can run the solution step by step following the instructions bellow:
 
 `cd` into the `src` directory:
 ```
